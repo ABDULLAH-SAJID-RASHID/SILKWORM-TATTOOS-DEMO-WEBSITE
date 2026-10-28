@@ -1,5 +1,5 @@
 /* =========================================================
-   PATRIOTIC PAIN TATTOO — Alpine.js & Custom Animations
+   SILKWORM TATTOO — Alpine.js & Custom Animations
    ========================================================= */
 
 function tattooStudio() {
@@ -12,12 +12,27 @@ function tattooStudio() {
     lightboxOpen: false,
     lightboxImage: '',
     activeCategory: 'all',
+    currentReview: 0,
+    reviews: [
+      { name: "Marcus V.", date: "2 months ago", text: "Silkworm Tattoo is hands down the best shop in Hamilton! The linework is insanely crisp, and the shop environment is super clean and welcoming.", service: "Custom Blackwork" },
+      { name: "Sarah K.", date: "1 month ago", text: "Had a cover-up done here and I couldn't be happier. You can't even tell there was an old tattoo underneath. True masters of custom ink!", service: "Cover-Up Tattooing" },
+      { name: "David L.", date: "3 weeks ago", text: "Awesome atmosphere and top-tier professionalism. Remember to bring cash, but it is 100% worth every penny. Will definitely be back for my sleeve.", service: "Fine Line Sleeve" },
+      { name: "Jessica R.", date: "4 months ago", text: "Incredible attention to detail. They listened to every single idea I had and turned it into an piece of art that fits my arm perfectly.", service: "Custom Realism" }
+    ],
     gallery: [
       { img: 'https://images.unsplash.com/photo-1604374376934-2df6fad6519b?auto=format&fit=crop&w=800&q=80', cat: 'blackwork', catName: 'Blackwork', title: 'Custom Tribal Sleeve' },
       { img: 'https://images.unsplash.com/photo-1501939387519-cf9c35d4f4eb?auto=format&fit=crop&w=800&q=80', cat: 'fine-line', catName: 'Fine Line', title: 'Botanical Micro Piece' },
       { img: 'https://images.unsplash.com/photo-1575492899586-009d962fc732?auto=format&fit=crop&w=800&q=80', cat: 'realism', catName: 'Realism', title: 'Portraiture Study' },
       { img: 'https://images.unsplash.com/photo-1759247943688-5d47a84dd615?auto=format&fit=crop&w=800&q=80', cat: 'blackwork', catName: 'Blackwork', title: 'Full Arm Coverage' }
     ],
+
+    nextReview() {
+      this.currentReview = (this.currentReview + 1) % this.reviews.length;
+    },
+
+    prevReview() {
+      this.currentReview = (this.currentReview - 1 + this.reviews.length) % this.reviews.length;
+    },
 
     initTheme() {
       // 1. Scroll Tracker
